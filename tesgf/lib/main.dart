@@ -33,7 +33,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   double result = 0;
-
+  String pb = "";
+  double x = 0;
   TextEditingController number1 =  TextEditingController();
   TextEditingController number2 =  TextEditingController();
 
@@ -42,11 +43,28 @@ class _MyHomePageState extends State<MyHomePage> {
       result = double.parse(number1.text)+ double.parse(number2.text);
     });
   }
+  void _calculat(){
+    
+    while ( x<result) {
+      setState(() {
+      if (result%x != 0){
+        pb = "เป็นจำนวนฉะเพราะ";
+      }else{
+        pb = "ไม่เป็นจำนวนฉะเพราะ";
+      }
+    });
+    }
+  }
   void _calculate_(){
     setState(() {
-      if (result%2 != 0 || result%3 != 0 || result%5 != 0 || result%7 != 0 || result%11 != 0 ){
-        
+      if (result == 0){
+        pb = "เป็นจำนวนฉะเพราะ";
+      }else{
+        pb = "ไม่เป็นจำนวนฉะเพราะ";
       }
+    });
+    setState(() {
+      
     });
   }
   void _calculate_m(){
@@ -85,6 +103,10 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               '$result',
               style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Text(
+              '$pb',
+              style: Theme.of(context).textTheme.headlineMedium,
             )
 
             ,Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: <Widget>[
@@ -92,8 +114,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ,child: const Text("บวก"),),
 
             
+            
             FloatingActionButton(onPressed:_calculate_m
-            ,child: const Text("ลบ"),)])
+            ,child: const Text("ลบ"),),
+
+            FloatingActionButton(onPressed:_calculate_
+            ,child: const Text("เช็กเลขจำนวนฉะเพราะ"),)])
             
           ],
         ),
