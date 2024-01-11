@@ -42,6 +42,13 @@ class _MyHomePageState extends State<MyHomePage> {
       result = double.parse(number1.text)+ double.parse(number2.text);
     });
   }
+  void _calculate_(){
+    setState(() {
+      if (result%2 != 0 || result%3 != 0 || result%5 != 0 || result%7 != 0 || result%11 != 0 ){
+        
+      }
+    });
+  }
   void _calculate_m(){
     setState(() {
       result = double.parse(number1.text)- double.parse(number2.text);
@@ -84,8 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
             FloatingActionButton(onPressed:_calculate_p
             ,child: const Text("บวก"),),
 
+            
             FloatingActionButton(onPressed:_calculate_m
             ,child: const Text("ลบ"),)])
+            
           ],
         ),
       ),
