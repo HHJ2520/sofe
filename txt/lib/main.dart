@@ -27,6 +27,7 @@ class _TicTacToeState extends State<TicTacToe> {
   int a = 0;
 
   @override
+  
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -51,6 +52,7 @@ class _TicTacToeState extends State<TicTacToe> {
                             currentPlayer = (currentPlayer == "X") ? "O" : "X";
 
                             if (checkWinner()) {
+                        
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -71,7 +73,7 @@ class _TicTacToeState extends State<TicTacToe> {
                               );
                             }
                           });
-                        }a++;
+                        }
                       },
                       child: Container(
                         width: 100,
@@ -92,6 +94,7 @@ class _TicTacToeState extends State<TicTacToe> {
               ),
             ),
             SizedBox(height: 20),
+            Text("$a"),
             // Save and Load Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -99,9 +102,9 @@ class _TicTacToeState extends State<TicTacToe> {
                 ElevatedButton(
                   onPressed: () async {
                     await loadGamea();
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text("Game Saved!"),
-                    ));
+                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    //   content: Text("Game Saved!"),
+                    // ));
                   },
                   child: Text("Save Game"),
                 ),
@@ -109,11 +112,19 @@ class _TicTacToeState extends State<TicTacToe> {
                 ElevatedButton(
                   onPressed: () async {
                     await loadGame();
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text("Game Loaded!"),
-                    ));
+                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    //   content: Text("Game Loaded!"),
+                    // ));
                   },
                   child: Text("Load Game"),
+                ),ElevatedButton(
+                  onPressed: () async {
+                    resetGame();
+                    // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    //   content: Text("Game Loaded!"),
+                    // ));
+                  },
+                  child: Text("re"),
                 ),
               ],
             ),
@@ -209,6 +220,7 @@ class _TicTacToeState extends State<TicTacToe> {
 
   void resetGame() {
     setState(() {
+      a = 0;
       board = List.generate(3, (_) => List.filled(3, ""));
       currentPlayer = "X";
     });
