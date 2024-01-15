@@ -34,7 +34,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   double result = 0;
   String pb = "";
-  double x = 0;
+  double x = 2;
+  double count = 0;
   TextEditingController number1 =  TextEditingController();
   TextEditingController number2 =  TextEditingController();
 
@@ -44,29 +45,23 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   void _calculat(){
-    
     while ( x<result) {
-      setState(() {
-      if (result%x != 0){
-        pb = "เป็นจำนวนฉะเพราะ";
-      }else{
-        pb = "ไม่เป็นจำนวนฉะเพราะ";
+      if (result%x == 0){
+        count++;
       }
-    });
+    x++;
     }
-  }
-  void _calculate_(){
     setState(() {
-      if (result == 0){
+      if (count == 0){
         pb = "เป็นจำนวนฉะเพราะ";
       }else{
         pb = "ไม่เป็นจำนวนฉะเพราะ";
       }
     });
-    setState(() {
-      
-    });
+    x = 2;
+    count = 0;
   }
+  
   void _calculate_m(){
     setState(() {
       result = double.parse(number1.text)- double.parse(number2.text);
@@ -118,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
             FloatingActionButton(onPressed:_calculate_m
             ,child: const Text("ลบ"),),
 
-            FloatingActionButton(onPressed:_calculate_
+            FloatingActionButton(onPressed:_calculat
             ,child: const Text("เช็กเลขจำนวนฉะเพราะ"),)])
             
           ],

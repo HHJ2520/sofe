@@ -125,14 +125,14 @@ class _GameScreenState extends State<GameScreen> {
           board[i][0] = " ";
           board[i][1] = " ";
         });
-        return;
+        
 
       }if ( board[i][1] == board[i][2] && board[i][0] != " ") {
         setState(() {
           board[i][1] = " ";
           board[i][2] = " ";
         }); 
-        return;
+        
       }
       if (board[0][i] == board[1][i]  && board[0][i] != " ") {
         
@@ -140,14 +140,14 @@ class _GameScreenState extends State<GameScreen> {
           board[0][i] = " ";
         board[1][i] = " ";
         });
-        return;
+        
       }
       if ( board[1][i] == board[2][i] && board[0][i] != " ") {
         setState(() {
           board[1][i] = " ";
         board[2][i] = " ";
         });
-        return;
+        
       }
     }
 
